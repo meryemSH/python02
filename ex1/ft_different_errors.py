@@ -1,4 +1,8 @@
 def garden_operations():
+    """
+    Test and catch ValueError, ZeroDivisionError,
+    FileNotFoundError,and KeyError.
+    """
     print("Testing ValueError...")
     try:
         int("abc")
@@ -33,6 +37,7 @@ def garden_operations():
 
 
 def test_error_types():
+    """Run garden_operations and show results."""
     print("=== Garden Error Types Demo ===\n")
     garden_operations()
     print("All error types tested successfully!")

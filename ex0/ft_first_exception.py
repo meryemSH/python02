@@ -1,4 +1,7 @@
 def check_temperature(temp_str):
+    """
+    Check if a temperature is suitable for plants and print a message.
+    """
     try:
         temperature = int(temp_str)
         if temperature < 0:
@@ -13,6 +16,9 @@ def check_temperature(temp_str):
 
 
 def test_temperature_input():
+    """
+    Test the check_temperature function with multiple sample inputs.
+    """
     print("=== Garden Temperature Checker ===\n")
     value_test = ["25", "abc", 100, -50]
 
