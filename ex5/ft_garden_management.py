@@ -1,6 +1,11 @@
 class GardenError(Exception):
     """Base error for all garden problems."""
     def __init__(self, message):
+        """
+        Initialize a GardenError.
+        Args:
+            message (str): Description of the error.
+        """
         super().__init__(message)
 
 
@@ -20,16 +25,37 @@ class SunError(GardenError):
 
 
 class GardenManager:
+    """
+    Class to manage a garden of plants.
+
+    Attributes:
+        plants (list): List of plants, each represented as
+        [name, water_level, sunlight_hours].
+    """
+
     def __init__(self):
+        """Initialize an empty garden."""
         self.plants = []
 
     def add_plants(self, plant_name, water_level, sunlight_hours):
+        """
+        Add a plant to the garden.
+
+        Raises:
+            PlantError: If plant name is empty.
+        """
         if not plant_name:
             raise PlantError("Plant name cannot be empty!")
         plant = [plant_name, water_level, sunlight_hours]
         self.plants.append(plant)
 
     def water_plants(self):
+        """
+        Water all plants in the garden.
+
+        Raises:
+            WaterError: If there are no plants to water.
+        """
         print("Opening watering system")
         try:
             if not self.plants:
@@ -41,6 +67,20 @@ class GardenManager:
             print("Closing watering system (cleanup)")
 
     def check_plant_health(self, plant_name_to_check):
+        """
+        Check the health of a specific plant based on water
+        and sunlight levels.
+
+        Args:
+            plant_name_to_check (str): Name of the plant to check.
+
+        Raises:
+            PlantError: If plant does not exist or water level is out of range.
+            SunError: If sunlight hours are out of range.
+
+        Prints:
+            A message if the plant is healthy.
+        """
         for plant in self.plants:
             name, water, sun = plant
             if name == plant_name_to_check:
@@ -67,6 +107,9 @@ class GardenManager:
 
 
 def test_garden_management():
+    """
+    Demonstrate the GardenManager with custom error handling.
+    """
     print("=== Garden Management System ===\n")
     manager = GardenManager()
 

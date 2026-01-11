@@ -1,6 +1,9 @@
 class GardenError(Exception):
     """Base error for all garden problems."""
     def __init__(self, message):
+        """
+        Initialize a GardenError.
+        """
         super().__init__(message)
 
 
@@ -15,13 +18,26 @@ class WaterError(GardenError):
 
 
 def check_plant(plant_name, healthy):
-    """Raise PlantError if the plant is unhealthy."""
+    """
+    Check the health of a plant and raise PlantError if unhealthy.
+
+    Args:
+        plant_name (str): Name of the plant.
+        healthy (bool): True if the plant is healthy, False otherwise.
+
+    Raises:
+        PlantError: If the plant is unhealthy.
+    """
     if not healthy:
         raise PlantError(f"The {plant_name} plant is wilting!")
 
 
 def check_water(tank_level):
-    """Raise WaterError if water is insufficient."""
+    """
+    Check the water level and raise WaterError if insufficient.
+    Raises:
+        WaterError: If water level is less than 1.
+    """
     if tank_level < 1:
         raise WaterError("Not enough water in the tank!")
 
